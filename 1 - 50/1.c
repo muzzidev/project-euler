@@ -2,12 +2,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
 int main(int argc, char const *argv[]){
+    // declara variables
     int n = atoi(argv[1]);
     int sum = 0;
     int i = 0;
+    // mientras i sea menor que la entrada del usuario se ejecuta
     while (i < n){
+        // si i es divisible por 3 o 5 le suma i a sum
         if (i % 3 == 0 || i % 5 == 0){
             sum += i;
             i++;
