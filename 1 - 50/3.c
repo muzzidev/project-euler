@@ -17,9 +17,10 @@ int main(int argc, char* argv[]) {
     // bucle que se ejecuta mientras i sea menor a num 
     for (int i = 2; i < num; i++){
       // si es primo, es un divisor de num y tambien es menor a num lo imprime
-      if(is_prime(i) && num % i == 0 && factores_primos < num){
+      if (is_prime(i) && num % i == 0 && factores_primos < num) {
         factores_primos *= i;
         printf("%i\n", i);
+        num /= i;
       }
     }
   return 0;
