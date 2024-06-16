@@ -1,22 +1,26 @@
 //The prime factors of 13195 are 5, 7, 13 and 29.
 //What is the largest prime factor of the number 600851475143
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+
+bool is_prime(int n){
+    for (int i = 2; i < n; i++){
+        if (n % i == 0) return false;
+    }
+    return true;
+}
 
 int main(int argc, char* argv[]) {
   int num = atoi(argv[1]);
-  int contador = 0;
-  int primoMasLargo = 0;
-  for (int i = 1; i < num; i++){
-    for (int h = 2; h < i; h++){
-      if (i % h == 0){
-        break;
-      }else{
-        primoMasLargo = i;
+  int factores_primos = 1;
+    // bucle que se ejecuta mientras i sea menor a num 
+    for (int i = 2; i < num; i++){
+      // si es primo, es un divisor de num y tambien es menor a num lo imprime
+      if(is_prime(i) && num % i == 0 && factores_primos < num){
+        factores_primos *= i;
+        printf("%i\n", i);
       }
     }
-  }
-  printf("%i\n", primoMasLargo);
   return 0;
 }
