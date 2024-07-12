@@ -4,24 +4,25 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-bool is_prime(int n){
-    for (int i = 2; i < n; i++){
-        if (n % i == 0) return false;
-    }
-    return true;
+bool is_prime(int n) {
+  for (int i = 2; i < n; i++) {
+    if (n % i == 0) return false;
+  }
+  return true;
 }
 
-int main(int argc, char* argv[]) {
-  int num = atoi(argv[1]);
-  int factores_primos = 1;
-    // bucle que se ejecuta mientras i sea menor a num 
-    for (int i = 2; i < num; i++){
-      // si es primo, es un divisor de num y tambien es menor a num lo imprime
-      if (is_prime(i) && num % i == 0 && factores_primos < num) {
-        factores_primos *= i;
-        printf("%i\n", i);
-        num /= i;
-      }
+int main(int argc, char const* argv[]) {
+  long long int num = strtoll(argv[1], NULL, 10);
+  int i;
+  // bucle que se ejecuta mientras i sea menor a num
+  for (i = 2; i <= num; i++) {
+    // mientras sea primo, sea un divisor de num y tambien sea menor a num lo imprime
+    while (is_prime(i) && (num % i == 0) && i <= num) {
+      printf("%lld\t", num);
+      printf("%i\n", i);
+      num /= i;
     }
+  }
+  printf("El factor primo más grande de %lld es: %i", strtoll(argv[1], NULL, 10), --i);
   return 0;
 }
